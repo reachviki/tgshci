@@ -1,19 +1,13 @@
 <?xml version="1.0" ?> 
 <project name="TGSHCI" default="war">
-	<property name="src.dir" location="src" />
+	
 	  
 	<path id="compile.classpath">
 		<fileset dir="WebContent/WEB-INF/lib">
 			<include name="*.jar"/>
 		</fileset>
 	</path>
-	
-	<path id="junit.class.path">
-		<fileset dir="WebContent/WEB-INF/lib">
-		    <pathelement location="lib/junit.jar" />
-		</fileset>    
-	</path>
-	
+		
 	<target name="init">
 		<mkdir dir="build/classes"/>
 		<mkdir dir="target" />
@@ -25,25 +19,7 @@
 		</javac>
 	</target>
 	
-	<target name="test">
-	  <junit fork="yes" haltonfailure="yes">
-	    <test name="${test.class.name}" />
-	    <formatter type="plain" usefile="false" />
-	  </junit>
-	</target>
-	
-	<target name="junit" depends="compile">
-	    <junit printsummary="on" fork="true" haltonfailure="yes">
-	      <classpath refid="junit.class.path" />
-	      <formatter type="xml" />
-	      <batchtest todir="${test.report.dir}">
-	        <fileset dir="${src.dir}">
-	          <include name="UserTest.java" />
-	        </fileset>
-	      </batchtest>
-	    </junit>
-	  </target>
-	
+			
 	<target name="war" depends="compile">
 		<war destfile="target/TGSHCI.war" webxml="WebContent/WEB-INF/web.xml">
 			<fileset dir="WebContent"/>
