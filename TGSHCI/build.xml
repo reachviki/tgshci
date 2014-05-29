@@ -18,19 +18,11 @@
 		</javac>
 	</target>
 	
-	<path id="test.classpath">
-	  <pathelement location="${classes}" />
-	  <pathelement location="/Libraries/JUnit 4/junit.jar" />
-	  <fileset dir="${lib}">
-	    <include name="**/*.jar"/>
-	  </fileset>
-	</path>
-	
+		
 	<target name="test">
 	  <junit fork="yes" haltonfailure="yes">
 	    <test name="${test.class.name}" />
 	    <formatter type="plain" usefile="false" />
-	    <classpath refid="test.classpath" />
 	  </junit>
 	</target>
 	
